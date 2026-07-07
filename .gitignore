@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment variables — NEVER commit real .env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Keep .env.example files (they are safe — no real secrets)
+!.env.example
+
+# Next.js
+.next/
+out/
+build/
+
+# Prisma generated client
+**/prisma/client/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Misc
+*.pem
+.vercel
