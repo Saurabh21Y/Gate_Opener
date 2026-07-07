@@ -243,3 +243,12 @@ docker exec -it venture-pg psql -U postgres -c "CREATE DATABASE resume_builder_d
 ## 🏢 Built For
 
 **Venture Builders Pvt Ltd** — Technical Assessment
+
+---
+
+## 👨‍💻 Author
+
+| Field | Details |
+|---|---|
+| **Name** | Saurabh Prakash |
+| **Phone** | +91 6202589259 |
