@@ -1,0 +1,151 @@
+{
+  "subject": "Operating System",
+  "questions": [
+    {
+      "id": 1,
+      "type": "MCQ",
+      "question": "Which scheduling algorithm is preemptive?",
+      "options": ["FCFS", "Round Robin", "SJF (non-preemptive)", "Priority (non-preemptive)"],
+      "correctAnswer": 1,
+      "difficulty": "Easy",
+      "concept": "CPU Scheduling",
+      "explanation": "Round Robin is preemptive — it uses a fixed time quantum and forcefully switches between processes.",
+      "marks": 1,
+      "negativeMarks": 0.33
+    },
+    {
+      "id": 2,
+      "type": "MCQ",
+      "question": "Which of the following is NOT a condition for deadlock?",
+      "options": ["Mutual Exclusion", "Preemption", "Hold and Wait", "Circular Wait"],
+      "correctAnswer": 1,
+      "difficulty": "Medium",
+      "concept": "Deadlock",
+      "explanation": "Deadlock requires No Preemption. Preemption prevents deadlock by allowing resources to be forcibly taken.",
+      "marks": 1,
+      "negativeMarks": 0.33
+    },
+    {
+      "id": 3,
+      "type": "MCQ",
+      "question": "What is the purpose of the Translation Lookaside Buffer (TLB)?",
+      "options": [
+        "To store disk I/O cache",
+        "To speed up virtual-to-physical address translation",
+        "To manage process scheduling",
+        "To handle page faults"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "Medium",
+      "concept": "Memory Management",
+      "explanation": "TLB is a cache for page table entries, used to speed up virtual-to-physical address translations.",
+      "marks": 2,
+      "negativeMarks": 0.66
+    },
+    {
+      "id": 4,
+      "type": "MCQ",
+      "question": "In the Banker's Algorithm, what does the 'Need' matrix represent?",
+      "options": [
+        "Resources currently allocated to each process",
+        "Maximum resources a process may request",
+        "Remaining resources a process may still request",
+        "Available resources in the system"
+      ],
+      "correctAnswer": 2,
+      "difficulty": "Hard",
+      "concept": "Deadlock Avoidance",
+      "explanation": "Need = Maximum - Allocation. It represents the additional resources a process may still request.",
+      "marks": 2,
+      "negativeMarks": 0.66
+    },
+    {
+      "id": 5,
+      "type": "MCQ",
+      "question": "Which page replacement algorithm suffers from Belady's Anomaly?",
+      "options": ["Optimal", "LRU", "FIFO", "LFU"],
+      "correctAnswer": 2,
+      "difficulty": "Hard",
+      "concept": "Page Replacement",
+      "explanation": "FIFO can exhibit Belady's Anomaly — increasing frames can increase page faults. Optimal and LRU are immune.",
+      "marks": 2,
+      "negativeMarks": 0.66
+    },
+    {
+      "id": 6,
+      "type": "MSQ",
+      "question": "Which of the following are necessary conditions for deadlock? (Select ALL that apply)",
+      "options": [
+        "Mutual Exclusion",
+        "Preemption",
+        "Hold and Wait",
+        "Circular Wait"
+      ],
+      "correctAnswer": [0, 2, 3],
+      "difficulty": "Medium",
+      "concept": "Deadlock",
+      "explanation": "All four Coffman conditions (Mutual Exclusion, No Preemption, Hold & Wait, Circular Wait) are needed. Preemption PREVENTS deadlock, so it is NOT a condition.",
+      "marks": 2,
+      "negativeMarks": 0
+    },
+    {
+      "id": 7,
+      "type": "MSQ",
+      "question": "Which of the following are examples of non-preemptive scheduling algorithms? (Select ALL that apply)",
+      "options": [
+        "FCFS",
+        "Round Robin",
+        "SJF (non-preemptive)",
+        "SRTF"
+      ],
+      "correctAnswer": [0, 2],
+      "difficulty": "Easy",
+      "concept": "CPU Scheduling",
+      "explanation": "FCFS and SJF (non-preemptive) do not forcibly take the CPU away from a running process. Round Robin and SRTF are preemptive.",
+      "marks": 2,
+      "negativeMarks": 0
+    },
+    {
+      "id": 8,
+      "type": "NAT",
+      "question": "A system has 5 processes and 3 resource types with instances [10, 5, 7]. Using the Banker's algorithm, if the Allocation matrix is [[0,1,0],[2,0,0],[3,0,2],[2,1,1],[0,0,2]] and Max matrix is [[7,5,3],[3,2,2],[9,0,2],[2,2,2],[4,3,3]], how many processes are in the safe sequence?",
+      "options": [],
+      "correctAnswer": null,
+      "natAnswerFrom": 5,
+      "natAnswerTo": 5,
+      "difficulty": "Hard",
+      "concept": "Deadlock Avoidance",
+      "explanation": "All 5 processes can complete in a safe sequence: P1 → P3 → P4 → P0 → P2. The answer is 5.",
+      "marks": 2,
+      "negativeMarks": 0
+    },
+    {
+      "id": 9,
+      "type": "NAT",
+      "question": "A system uses a page size of 4 KB. If a virtual address is 32 bits wide, how many entries (in thousands) does a single-level page table have?",
+      "options": [],
+      "correctAnswer": null,
+      "natAnswerFrom": 1048,
+      "natAnswerTo": 1048,
+      "difficulty": "Medium",
+      "concept": "Memory Management",
+      "explanation": "Page table entries = 2^32 / 2^12 = 2^20 = 1,048,576 ≈ 1048K entries.",
+      "marks": 2,
+      "negativeMarks": 0
+    },
+    {
+      "id": 10,
+      "type": "NAT",
+      "question": "If a CPU executes 10^9 instructions per second and an average instruction takes 1.5 cycles, what is the clock speed in GHz? (Enter answer rounded to 1 decimal place)",
+      "options": [],
+      "correctAnswer": null,
+      "natAnswerFrom": 1.4,
+      "natAnswerTo": 1.6,
+      "difficulty": "Easy",
+      "concept": "CPU Performance",
+      "explanation": "Clock speed = IPS × CPI = 10^9 × 1.5 = 1.5 × 10^9 Hz = 1.5 GHz",
+      "marks": 1,
+      "negativeMarks": 0
+    }
+  ]
+}

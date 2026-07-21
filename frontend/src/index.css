@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+/* ─── Tailwind v4 Theme Customization ────────────────────────────────────────── */
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui;
+
+  /* Brand Colors */
+  --color-brand-50:  #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-200: #c7d2fe;
+  --color-brand-300: #a5b4fc;
+  --color-brand-400: #818cf8;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+  --color-brand-800: #3730a3;
+  --color-brand-900: #312e81;
+  --color-brand-950: #1e1b4b;
+
+  /* Surface Colors */
+  --color-surface:        #0f172a;
+  --color-surface-card:   #1e293b;
+  --color-surface-border: #334155;
+  --color-surface-hover:  #263348;
+
+  /* Animations */
+  --animate-fade-in:    fadeIn 0.3s ease-out;
+  --animate-slide-up:   slideUp 0.4s ease-out;
+  --animate-pulse-slow: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+
+  /* Shadow */
+  --shadow-card:        0 4px 24px rgba(0,0,0,0.4);
+  --shadow-glow-brand:  0 0 20px rgba(99,102,241,0.3);
+  --shadow-glow-green:  0 0 20px rgba(34,197,94,0.3);
+  --shadow-glow-red:    0 0 20px rgba(239,68,68,0.3);
+}
+
+/* ─── Keyframes ───────────────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-surface);
+  color: #f1f5f9;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar          { width: 6px; }
+::-webkit-scrollbar-track    { background-color: var(--color-surface-card); }
+::-webkit-scrollbar-thumb    { background-color: var(--color-surface-border); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background-color: var(--color-brand-500); }
+
+/* ─── Utility Classes (custom) ───────────────────────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, #818cf8 0%, #6366f1 50%, #4f46e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.progress-bar  { height: 0.5rem; border-radius: 9999px; background-color: var(--color-surface-border); overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 9999px; transition: width 0.5s ease; background: linear-gradient(90deg, #4f46e5, #818cf8); }
+
+/* ─── Glass Card ─────────────────────────────────────────────────────────────── */
+.glass-card {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-surface-border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(12px);
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  background-color: var(--color-brand-600);
+  color: white; font-weight: 600;
+  padding: 0.75rem 1.5rem; border-radius: 0.75rem;
+  border: none; cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow-glow-brand);
+}
+.btn-primary:hover:not(:disabled) { background-color: var(--color-brand-500); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-surface-border);
+  color: #e2e8f0; font-weight: 500;
+  padding: 0.75rem 1.5rem; border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.btn-secondary:hover { background-color: var(--color-surface-hover); border-color: var(--color-brand-500); }
+.btn-secondary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-danger {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  background-color: #e11d48;
+  color: white; font-weight: 600;
+  padding: 0.75rem 1.5rem; border-radius: 0.75rem;
+  border: none; cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-danger:hover:not(:disabled) { background-color: #f43f5e; }
+.btn-danger:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-amber {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  background-color: #d97706;
+  color: white; font-weight: 600;
+  padding: 0.625rem 1.25rem; border-radius: 0.75rem;
+  border: none; cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-amber:hover { background-color: #f59e0b; }
+
+/* ─── Form Controls ──────────────────────────────────────────────────────────── */
+.input, .select {
+  width: 100%;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-surface-border);
+  color: #f1f5f9;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.input:focus, .select:focus {
+  border-color: var(--color-brand-500);
+  box-shadow: 0 0 0 2px rgba(99,102,241,0.3);
+}
+.select { cursor: pointer; }
+.input::placeholder { color: #64748b; }
+
+/* ─── Badge ──────────────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center;
+  padding: 0.25rem 0.75rem; border-radius: 9999px;
+  font-size: 0.75rem; font-weight: 600;
+}
+.badge-easy   { background: rgba(34,197,94,0.15);  color: #4ade80; border: 1px solid rgba(34,197,94,0.3);  }
+.badge-medium { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+.badge-hard   { background: rgba(239,68,68,0.15);  color: #f87171; border: 1px solid rgba(239,68,68,0.3);  }
+
+/* ─── Option Radio Button ────────────────────────────────────────────────────── */
+.option-btn {
+  display: flex; align-items: flex-start; gap: 1rem; width: 100%;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-surface-border);
+  color: #cbd5e1; text-align: left;
+  border-radius: 0.75rem; padding: 1rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+}
+.option-btn:hover:not(:disabled) { border-color: var(--color-brand-500); background-color: var(--color-surface-hover); color: white; }
+.option-btn.selected  { border-color: var(--color-brand-500); background-color: rgba(79,70,229,0.15); color: white; }
+.option-btn.correct   { border-color: #22c55e; background-color: rgba(34,197,94,0.1);  color: #86efac; }
+.option-btn.wrong     { border-color: #ef4444; background-color: rgba(239,68,68,0.1);  color: #fca5a5; }
+.option-btn:disabled  { cursor: default; }
+
+/* ─── Question Nav Buttons ───────────────────────────────────────────────────── */
+.q-num-btn {
+  width: 2.25rem; height: 2.25rem; border-radius: 0.5rem;
+  font-size: 0.75rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.15s;
+  border: 1px solid var(--color-surface-border);
+}
+.q-num-btn.unattempted { background-color: var(--color-surface); color: #94a3b8; }
+.q-num-btn.unattempted:hover { border-color: var(--color-brand-400); }
+.q-num-btn.attempted   { background-color: var(--color-brand-600); color: white; border-color: var(--color-brand-500); }
+.q-num-btn.marked      { background-color: #b45309; color: white; border-color: #d97706; }
+.q-num-btn.current     { outline: 2px solid white; outline-offset: 2px; transform: scale(1.1); }
+
+/* ─── Animations ─────────────────────────────────────────────────────────────── */
+.animate-fade-in  { animation: fadeIn  0.3s ease-out; }
+.animate-slide-up { animation: slideUp 0.4s ease-out; }
+.animate-pulse-slow { animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
