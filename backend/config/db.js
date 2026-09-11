@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const connectDB = async () => {
   const mongoUri = process.env.MONGO_URI;
 
   if (!mongoUri) {
     throw new Error(
-      'MONGO_URI is not configured. Add it to backend/.env, for example: ' +
-      'MONGO_URI=mongodb://localhost:27017/gateprep'
+      "MONGO_URI is not configured. Add it to backend/.env, for example: " +
+        "MONGO_URI=mongodb://localhost:27017/gateprep",
     );
   }
 
@@ -20,12 +20,14 @@ const connectDB = async () => {
       return;
     } catch (error) {
       attempts++;
-      console.error(`❌ MongoDB connection attempt ${attempts} failed: ${error.message}`);
+      console.error(
+        `❌ MongoDB connection attempt ${attempts} failed: ${error.message}`,
+      );
       if (attempts < maxRetries) {
         console.log(`🔄 Retrying in 3 seconds...`);
         await new Promise((res) => setTimeout(res, 3000));
       } else {
-        console.error('💥 All MongoDB connection attempts failed. Exiting.');
+        console.error("💥 All MongoDB connection attempts failed. Exiting.");
         process.exit(1);
       }
     }
