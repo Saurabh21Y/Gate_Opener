@@ -47,9 +47,12 @@ const useTimer = (initialSeconds, onExpire) => {
     setTimeLeft(seconds ?? initialSeconds);
   }, [stop, initialSeconds]);
 
-  // Cleanup on unmount
+  // Cleanup on unmount — must null the ref so StrictMode remount works correctly
   useEffect(() => {
-    return () => clearInterval(intervalRef.current);
+    return () => {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    };
   }, []);
 
   const formatted = {

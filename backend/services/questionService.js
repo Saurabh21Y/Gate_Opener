@@ -192,4 +192,12 @@ const evaluateExam = async (userAnswers, timeTaken) => {
   };
 };
 
-module.exports = { saveQuestions, fetchQuestionsForExam, getSubjects, evaluateExam };
+/**
+ * Delete all questions for a subject.
+ */
+const deleteSubject = async (subject) => {
+  const result = await Question.deleteMany({ subject });
+  return { deleted: result.deletedCount };
+};
+
+module.exports = { saveQuestions, fetchQuestionsForExam, getSubjects, evaluateExam, deleteSubject };

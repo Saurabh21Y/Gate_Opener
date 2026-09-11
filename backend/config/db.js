@@ -1,12 +1,21 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
+  const mongoUri = process.env.MONGO_URI;
+
+  if (!mongoUri) {
+    throw new Error(
+      'MONGO_URI is not configured. Add it to backend/.env, for example: ' +
+      'MONGO_URI=mongodb://localhost:27017/gateprep'
+    );
+  }
+
   const maxRetries = 5;
   let attempts = 0;
 
   while (attempts < maxRetries) {
     try {
-      const conn = await mongoose.connect(process.env.MONGO_URI);
+      const conn = await mongoose.connect(mongoUri);
       console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
       return;
     } catch (error) {

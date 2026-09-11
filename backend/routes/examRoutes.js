@@ -1,5 +1,5 @@
 const express = require('express');
-const { getExamQuestions, getAvailableSubjects, submitExam } = require('../controllers/examController');
+const { getExamQuestions, getAvailableSubjects, submitExam, deleteSubjectController } = require('../controllers/examController');
 
 const router = express.Router();
 
@@ -11,5 +11,8 @@ router.get('/subjects', getAvailableSubjects);
 
 // POST /exam/submit
 router.post('/submit', submitExam);
+
+// DELETE /exam/subject/:subject  — deletes all questions for a subject
+router.delete('/subject/:subject', deleteSubjectController);
 
 module.exports = router;

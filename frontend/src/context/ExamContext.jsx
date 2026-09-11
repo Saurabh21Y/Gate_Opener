@@ -12,6 +12,7 @@ const initialState = {
     subject: '',
     difficulty: '',
     limit: 10,
+    time: null, // null = auto-calculate, number = minutes (set by GATE mode)
   },
   timeTaken: 0,
 };

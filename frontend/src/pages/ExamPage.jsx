@@ -15,7 +15,10 @@ export default function ExamPage() {
     submitExamResult, examStatus, config,
   } = useExam();
 
-  const totalDuration = Math.min(questions.length * SECONDS_PER_QUESTION, 3 * 3600);
+  // Use preset time from GATE mode config (in minutes), or fall back to 2 min per question
+  const totalDuration = config.time
+    ? config.time * 60
+    : Math.min(questions.length * SECONDS_PER_QUESTION, 3 * 3600);
   const timeLeftRef = useRef(totalDuration);
   const [submitting, setSubmitting] = useState(false);
   const [showSubmitModal, setShowSubmitModal] = useState(false);

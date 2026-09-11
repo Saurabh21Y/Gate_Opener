@@ -52,4 +52,11 @@ export const fetchQuestions = (params = {}) => API.get('/exam', { params });
  */
 export const submitExam = (payload) => API.post('/exam/submit', payload);
 
+/**
+ * Delete all questions for a subject (paper).
+ * @param {string} subject
+ */
+export const deleteSubject = (subject) =>
+  API.delete(`/exam/subject/${encodeURIComponent(subject)}`);
+
 export default API;

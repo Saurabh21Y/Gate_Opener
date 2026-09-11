@@ -1,4 +1,4 @@
-const { fetchQuestionsForExam, getSubjects, evaluateExam } = require('../services/questionService');
+const { fetchQuestionsForExam, getSubjects, evaluateExam, deleteSubject } = require('../services/questionService');
 
 /**
  * GET /exam
@@ -67,4 +67,26 @@ const submitExam = async (req, res, next) => {
   }
 };
 
-module.exports = { getExamQuestions, getAvailableSubjects, submitExam };
+/**
+ * DELETE /exam/subject/:subject
+ * Deletes all questions for the given subject.
+ */
+const deleteSubjectController = async (req, res, next) => {
+  try {
+    const subject = decodeURIComponent(req.params.subject);
+    if (!subject) {
+      return res.status(400).json({ success: false, message: 'Subject name is required.' });
+    }
+    const result = await deleteSubject(subject);
+    return res.status(200).json({
+      success: true,
+      message: `Deleted ${result.deleted} question(s) for subject "${subject}".`,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { getExamQuestions, getAvailableSubjects, submitExam, deleteSubjectController };
+
